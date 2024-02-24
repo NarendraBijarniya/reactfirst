@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
 import './App.css';
-//import About from './components/About.js';
+import About from './components/About.js';
 import Navbar from './components/Navbar.js';
 //import Practice from './components/Practice.js';
 import TextForm from './components/TextForm.js';
 import Alert from './components/Alert.js';
+
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+} from "react-router-dom";
 
 
 function App() {
@@ -38,7 +45,7 @@ function App() {
       setbuttonText('Disable DarkMode');
       document.body.style.backgroundColor = '#062647';
       showAlert("Dark mode enabled", "success");
-      
+
       // setInterval(() => {
       //   document.title = "TextUtils is amazing!!";
       // }, 2000);
@@ -58,14 +65,18 @@ function App() {
 
   return (
     <>
-      <Navbar text="Utils" aboutText="About Utils" mode={mode} toggleMode={toggleMode} buttonText={buttonText} />
-      <Alert alert={alert} />
-      {/* <Navbar/> */}
-      <div className="container">
-        <TextForm heading="Enter text here to analyze" mode={mode} showAlert={showAlert} />
-        {/* <About /> */}
-      </div>
-      {/* <Practice /> */}
+      <Router>
+        <Navbar text="Utils" aboutText="About" mode={mode} toggleMode={toggleMode} buttonText={buttonText} />
+        <Alert alert={alert} />
+        {/* <Navbar/> */}
+        <div className="container">
+          <Routes>
+            <Route exact path="/about" element={<About />}/>
+            <Route exact path="/" element={<TextForm heading="Enter text here to analyze" mode={mode} showAlert={showAlert}/>}/>
+          </Routes>
+        </div>
+        {/* <Practice /> */}
+      </Router>
     </>
 
   );
