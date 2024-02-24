@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import './App.css';
-import About from './components/About.js';
+// import About from './components/About.js';
 import Navbar from './components/Navbar.js';
 //import Practice from './components/Practice.js';
 import TextForm from './components/TextForm.js';
 import Alert from './components/Alert.js';
 
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Link,
-} from "react-router-dom";
+// import {
+//   BrowserRouter as Router,
+//   Routes,
+//   Route,
+//   Link,
+// } from "react-router-dom";
 
 
 function App() {
@@ -65,18 +65,20 @@ function App() {
 
   return (
     <>
-      <Router>
+      {/* <Router> */}
         <Navbar text="Utils" aboutText="About" mode={mode} toggleMode={toggleMode} buttonText={buttonText} />
         <Alert alert={alert} />
         {/* <Navbar/> */}
         <div className="container">
-          <Routes>
-            <Route exact path="/about" element={<About />}/>
-            <Route exact path="/" element={<TextForm heading="Enter text here to analyze" mode={mode} showAlert={showAlert}/>}/>
-          </Routes>
+          {/* <Routes> */}
+            {/* <Route exact path="/about" element={<About />}/> */}
+            {/* <About/> */}
+            {/* <Route exact path="/" element={<TextForm heading="Enter text here to analyze" mode={mode} showAlert={showAlert}/>}/> */}
+            <TextForm heading="Enter text here to analyze" mode={mode} showAlert={showAlert}/>
+          {/* </Routes> */}
         </div>
         {/* <Practice /> */}
-      </Router>
+      {/* </Router> */}
     </>
 
   );
